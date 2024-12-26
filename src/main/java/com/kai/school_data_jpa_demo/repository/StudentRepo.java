@@ -3,6 +3,7 @@ package com.kai.school_data_jpa_demo.repository;
 import com.kai.school_data_jpa_demo.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -26,7 +27,11 @@ public interface StudentRepo extends JpaRepository<Student, Long> {
     @Query("SELECT s.firstName FROM Student s WHERE s.emailId = ?1")
     String getStudentFirstNameByEmailAddress(String emailAddress);
 
-    // Native SQL
+    // Native Query
     @Query(value = "SELECT * FROM student_tbl WHERE email_address = ?1", nativeQuery = true)
     Student getStudentByEmailAddressNative(String emailAddress);
+
+    @Query(value = "SELECT * FROM student_tbl WHERE email_address = :emailId", nativeQuery = true)
+    Student getStudentByEmailAddressNativeNamedParam(@Param("emailId") String emailAddress);
+
 }
