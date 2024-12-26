@@ -89,7 +89,12 @@ class StudentRepoTest {
 
     @Test
     public void printGetStudentByEmailNativeSqlParam() {
-        Student student = studentRepo.getStudentByEmailAddressNative("titanni@email.com");
+        Student student = studentRepo.getStudentByEmailAddressNativeNamedParam("titanni@email.com");
         System.out.println("Student : " + student);
+    }
+
+    @Test
+    public void updateStudentNameByEmailAddress() {
+        studentRepo.updateStudentNameByEmailId("Zukk", "zukkiii@email.com");
     }
 }
