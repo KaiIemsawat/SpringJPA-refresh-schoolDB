@@ -27,7 +27,7 @@ public class CourseMaterial {
 
     private String url;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(
             name = "course_id", // name from database
             referencedColumnName = "courseId" // name from Course Entity
