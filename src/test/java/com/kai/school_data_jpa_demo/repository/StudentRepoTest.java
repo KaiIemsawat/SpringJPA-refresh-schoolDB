@@ -1,5 +1,6 @@
 package com.kai.school_data_jpa_demo.repository;
 
+import com.kai.school_data_jpa_demo.entity.Guardian;
 import com.kai.school_data_jpa_demo.entity.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,28 @@ class StudentRepoTest {
                 .emailId("zukkiii@email.com")
                 .firstName("Zukkii")
                 .lastName("Iem")
-                .guardianName("Kai")
-                .guardianEmail("kaii@email.com")
-                .guardianMobile("777-777-7777")
+//                .guardianName("Kai")
+//                .guardianEmail("kaii@email.com")
+//                .guardianMobile("777-777-7777")
                 .build();
+        studentRepo.save(student);
+    }
+
+    @Test
+    public void saveStudentWithGuardian() {
+        Guardian guardian = Guardian.builder()
+                .name("Kai")
+                .email("kaii@email.com")
+                .mobile("777-777-7777")
+                .build();
+
+        Student student = Student.builder()
+                .firstName("Titan")
+                .emailId("titanni@email.com")
+                .lastName("Iem")
+                .guardian(guardian)
+                .build();
+
         studentRepo.save(student);
     }
 
