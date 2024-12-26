@@ -21,4 +21,9 @@ public class Course {
     private String title;
 
     private Integer credit;
+
+    @OneToOne(
+            mappedBy = "course" // from 'private Course course;' in CourseMaterial class
+    )
+    private CourseMaterial courseMaterial;
 }
