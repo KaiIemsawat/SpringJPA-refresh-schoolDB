@@ -1,6 +1,7 @@
 package com.kai.school_data_jpa_demo.repository;
 
 import com.kai.school_data_jpa_demo.entity.Course;
+import com.kai.school_data_jpa_demo.entity.Student;
 import com.kai.school_data_jpa_demo.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,5 +79,29 @@ class CourseRepoTest {
         List<Course> courses = courseRepo.findByTitleContaining("n", firstPageTenRecords).getContent();
 
         System.out.println("Course : " + courses);
+    }
+
+    @Test
+    public void saveCourseWithStudentAndTeacher() {
+        Teacher teacher = Teacher.builder()
+                .firstName("Biscuit")
+                .lastName("Hampton")
+                .build();
+
+        Student student = Student.builder()
+                .firstName("TestStudent")
+                .lastName("StudentLastname")
+                .emailId("ts@email.com")
+                .build();
+
+        Course course = Course.builder()
+                .title("JS")
+                .credit(6)
+                .teacher(teacher)
+                .build();
+
+        course.addStudents(student);
+
+        courseRepo.save(course);
     }
 }
