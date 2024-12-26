@@ -26,4 +26,11 @@ public class Course {
             mappedBy = "course" // from 'private Course course;' in CourseMaterial class
     )
     private CourseMaterial courseMaterial;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "teacher_id", // name from database
+            referencedColumnName = "teacherId" // name from Teacher Entity
+    )
+    private Teacher teacher;
 }
