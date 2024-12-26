@@ -25,7 +25,11 @@ public class CourseMaterial {
 
     private String url;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            optional = false // Make it required
+    )
     @JoinColumn(
             name = "course_id", // name from database
             referencedColumnName = "courseId" // name from Course Entity

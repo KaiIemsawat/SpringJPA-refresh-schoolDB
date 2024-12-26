@@ -19,12 +19,12 @@ class CourseMaterialRepoTest {
     @Test
     public void saveCourseMaterial() {
         Course course = Course.builder()
-                .title("JPA")
+                .title(".NET")
                 .credit(4)
                 .build();
 
         CourseMaterial courseMaterial = CourseMaterial.builder()
-                .url("www.doggos.com")
+                .url("www.howtochaseaball.com")
                 .course(course)
                 .build();
 
